@@ -74,6 +74,49 @@ form {
   padding-top: 5%;
 }
 
+.listButton {
+  background-color: #555555;
+  padding: 15px 15px;
+  border-radius: 3px;
+  background-image: url('hamburgerMenu.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 95%;
+  left: 80%;
+}
+
+.gridButton {
+  background-color: #555555;
+  padding: 15px 15px;
+  border-radius: 3px;
+  background-image: url('gridMenu.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 95%;
+  left: 83%;
+
+}
+
+.arrowsButton {
+  background-color: #555555;
+  padding: 15px 15px;
+  border-radius: 3px;
+  background-image: url('arrowsMenu.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 95%;
+  left: 86%;
+
+}
+
+
+
 /* for responsiveness on phones and smaller screens */
 @media (min-width: 576px) {
 
