@@ -81,6 +81,20 @@ form {
 
 }
 
+.arrowsButton {
+  background-color: #555555;
+  padding: 15px 15px;
+  border-radius: 3px;
+  background-image: url('arrowsMenu.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 95%;
+  left: 86%;
+
+}
+
 
 
 /* for responsiveness on phones and smaller screens */
