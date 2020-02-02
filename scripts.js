@@ -154,17 +154,36 @@ $(document).ready(function() {
   // when form for initial selection of type of event submits
   // $('.firstMenu').submit()
 
+  var genreString;
+  var actorString;
+  var yearString;
+
   // when form gets submitted, you get it in here
   $('.secondMenu').submit(function(event) {
+    event.preventDefault();
+
     //TODO var marathonString = $('#genreSelect').val();
-    var genreString = $('#genreSelect').val();
-    var actorString = $('#yearText').val();
-    var yearString = $('#actorText').val();
+    genreString = $('#genreSelect').val();
+    actorString = $('#yearText').val();
+    yearString = $('#actorText').val();
     console.log(genreString);
     console.log(actorString);
     console.log(yearString);
+    navigateDown();
 
-    fetch('https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&page=1&include_adult=false')
+   /*fetch('https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + actorString +'&page=1&include_adult=false')
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+
+      var jobArray = data.results;
+      for(i in jobArray){
+        console.log(jobArray[i].id);
+      }
+    });*/
+
+    /*fetch('https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&page=1&include_adult=false')
     .then(response => {
       return response.json();
     })
@@ -173,7 +192,7 @@ $(document).ready(function() {
       for(i in jobArray){
         console.log(jobArray[i].popularity)
       }
-    });
+    });*/
 
     //console.log($("genreSelect").val())
     event.preventDefault(); // DO NOT DELETE
@@ -201,24 +220,6 @@ $(document).ready(function() {
         navigateDown();
       }
     }
-  });
-
-  $('#goBtn').on('click', function(e) {
-    e.preventDefault();
-    navigateDown();
-
-    fetch('https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + author +'&page=1&include_adult=false')
-    .then(response => {
-    return response.json();
-    })
-    .then(data => {
-      var jobArray = data.results;
-      for(i in jobArray){
-        console.log(jobArray[i].popularity);
-      }
-    });
-
-    // get what the user entered and create the api request
   });
   
   $(document).on("mousewheel DOMMouseScroll",
