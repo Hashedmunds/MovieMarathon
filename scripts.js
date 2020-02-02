@@ -1,5 +1,20 @@
 var api_key = '43f9f3c9828f30fa5e2f6f6a7b11b83e';
 
+function getMovies(actor){
+
+  fetch('https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&page=1&include_adult=false')
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    var jobArray = data.results;
+    for(i in jobArray){
+      console.log(jobArray[i].popularity)
+    }
+  });
+}
+
+
 'use strict';
 // Abandon all hope ye who enter here
 $(document).ready(function() {
@@ -129,7 +144,6 @@ $(document).ready(function() {
     }
   })
 
-
   // populates the options for user to select
   // TODO: put all the names of the genres
   // TODO: need to fetch this list from endpoint: GET /genre/movie/list
@@ -140,6 +154,64 @@ $(document).ready(function() {
   // when form for initial selection of type of event submits
   // $('.firstMenu').submit()
 
+  var genreString;
+  var actorString;
+  var yearString;
+
+  // when form gets submitted, you get it in here
+  $('.secondMenu').submit(function(event) {
+    event.preventDefault();
+
+    //TODO var marathonString = $('#genreSelect').val();
+    genreString = $('#genreSelect').val();
+    actorString = $('#yearText').val();
+    yearString = $('#actorText').val();
+    console.log(genreString);
+    console.log(actorString);
+    console.log(yearString);
+    navigateDown();
+
+   /*fetch('https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + actorString +'&page=1&include_adult=false')
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+
+      var jobArray = data.results;
+      for(i in jobArray){
+        console.log(jobArray[i].id);
+      }
+    });*/
+
+    /*fetch('https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&page=1&include_adult=false')
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      var jobArray = data.results;
+      for(i in jobArray){
+        console.log(jobArray[i].popularity)
+      }
+    });*/
+
+    //console.log($("genreSelect").val())
+    event.preventDefault(); // DO NOT DELETE
+  });
+
+
+  // Get the elements with class="column"
+  var elements = document.getElementsByClassName("column");
+
+  // Declare a loop variable
+  var i;
+
+  // List View
+  function listView() {
+    for (i = 0; i < elements.length; i++) {
+      elements[i].style.width = "100%";
+    }
+  }
+
   $(document).on("mousewheel DOMMouseScroll", function(e) {
     if (!navigating) {
       if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
@@ -148,11 +220,6 @@ $(document).ready(function() {
         navigateDown();
       }
     }
-  });
-
-  $('#goBtn').on('click', function(e) {
-    e.preventDefault();
-    navigateDown();
   });
   
   $(document).on("mousewheel DOMMouseScroll",
